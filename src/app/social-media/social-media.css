@@ -1,0 +1,19 @@
+.social-icons {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-icons a {
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-right: 25px;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2); /* delikatne powiększenie */
+  color: #0d6efd; /* opcjonalnie zmiana koloru na niebieski */
+}
+
+.social-icons i {
+  font-size: 34px;
+}
