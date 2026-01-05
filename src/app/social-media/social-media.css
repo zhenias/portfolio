@@ -17,3 +17,7 @@
 .social-icons i {
   font-size: 34px;
 }
+
+.animate-fadeInIcons {
+  animation: fadeIn 0.8s ease-out forwards;
+}

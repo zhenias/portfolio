@@ -1,22 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212;
-    color: #e0e0e0;
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* Animacja fadeIn */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
   }
 
-  .tech-list li {
-    background: #1e1e1e;
-    color: #f0f0f0;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .tech-list li {
-    background: gray !important;
-  }
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
 
-  .intro-container {
-    color: #fff !important;
-  }
+.delay-150 {
+  animation-delay: 0.15s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
 }
