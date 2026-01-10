@@ -17,42 +17,29 @@ img {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.intro-container {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-
-  animation: fadeIn 1s ease-in-out;
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
-.intro-container h1 {
-  font-weight: 600;
-  margin-bottom: 10px;
+.delay-150 {
+  animation-delay: 0.15s;
 }
 
-.intro-container p {
-  font-size: 16px;
-  margin: 8px 0;
+.delay-300 {
+  animation-delay: 0.3s;
 }
 
-.tech-list {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0;
-}
-
-.tech-list li {
-  background: #f0f0f0;
-  margin: 6px 2px;
-  padding: 8px 12px;
-  border-radius: 20px;
-  display: inline-block;
-  font-weight: 500;
-  font-size: 15px;
+.delay-450 {
+  animation-delay: 0.45s;
 }

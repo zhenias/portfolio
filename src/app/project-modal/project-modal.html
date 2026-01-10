@@ -1,0 +1,98 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" (click)="onBackdropClick($event)">
+
+  <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate-modal">
+
+    <!-- Nagłówek -->
+    <div class="flex justify-between items-center p-6 border-b bg-gradient-to-r from-purple-50 to-blue-50">
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900">{{project?.title}}</h3>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span *ngFor="let tag of project?.tags" class="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
+            {{tag}}
+          </span>
+        </div>
+      </div>
+      <button (click)="close()"
+        class="text-gray-500 cursor-pointer hover:text-gray-700 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+        &times;
+      </button>
+    </div>
+
+    <!-- Zawartość -->
+    <div class="p-6 overflow-y-auto max-h-[70vh]">
+
+      <!-- Galeria -->
+      <div *ngIf="project?.allImages?.length" class="mb-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+          <img *ngFor="let image of project?.allImages; let i = index" [src]="image" [alt]="'Screenshot ' + (i + 1)"
+            (click)="openImageLightbox(image)"
+            class="w-full h-40 shadow object-cover rounded-lg hover:shadow-purple-200 cursor-pointer hover:opacity-90 transition-opacity">
+        </div>
+      </div>
+
+      <!-- Opis -->
+      <div class="mb-8" *ngIf="project?.description">
+        <h4 class="text-xl font-semibold mb-3 text-gray-800">
+          <i class="bi bi-file-text mr-2"></i>Opis projektu
+        </h4>
+        <p class="text-gray-700 leading-relaxed">{{project?.description}}</p>
+      </div>
+
+      <!-- Technologie -->
+      <div class="mb-8" *ngIf="project?.technologies">
+        <h4 class="text-xl font-semibold mb-3 text-gray-800">
+          <i class="bi bi-code-slash mr-2"></i>Technologie
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          <span *ngFor="let tech of project?.technologies" class="px-3 py-1.5 rounded-lg text-sm border"
+            [ngClass]="projectsService.getColorClass(tech)">
+            {{tech}}
+          </span>
+        </div>
+      </div>
+
+      <!-- Funkcjonalności -->
+      <div class="mb-8" *ngIf="project?.features">
+        <h4 class="text-xl font-semibold mb-3 text-gray-800">
+          <i class="bi bi-list-check mr-2"></i>Funkcjonalności
+        </h4>
+        <ul class="space-y-2">
+          <li *ngFor="let feature of project?.features" class="flex items-start gap-2 text-gray-700">
+            <i class="bi bi-check-circle text-green-500 mt-1"></i>
+            <span>{{feature}}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Linki -->
+      <div class="pt-6 border-t" *ngIf="project?.githubUrl || project?.demoUrl">
+        <h4 class="text-xl font-semibold mb-4 text-gray-800">
+          <i class="bi bi-link-45deg mr-2"></i>Linki
+        </h4>
+        <div class="flex flex-wrap gap-3">
+          <a *ngIf="project?.githubUrl" [href]="project?.githubUrl" target="_blank"
+            class="px-4 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-all duration-300 hover:shadow-md font-medium flex items-center gap-2">
+            <i class="bi bi-github"></i>
+            Zobacz kod źródłowy
+          </a>
+          <a *ngIf="project?.demoUrl" [href]="project?.demoUrl" target="_blank"
+            class="px-4 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:shadow-md font-medium flex items-center gap-2">
+            <i class="bi bi-eye"></i>
+            Zobacz wersję demo
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div *ngIf="selectedImage" class="fixed inset-0 z-[60] flex items-center justify-center bg-gray-600/50 bg-opacity-95 p-4"
+  (click)="selectedImage = null">
+  <img [src]="selectedImage" alt="Powiększone zdjęcie" class="max-w-full max-h-full object-contain rounded-lg shadow-xl">
+  <button (click)="selectedImage = null"
+    class="absolute top-6 right-6 text-white text-3xl w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10">
+    &times;
+  </button>
+</div>
