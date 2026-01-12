@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {Me} from './me/me';
-import {Projects} from './projects/projects';
 
 export const routes: Routes = [
   {
@@ -8,7 +7,8 @@ export const routes: Routes = [
     component: Me
   },
   {
-    path: 'projects',
-    component: Projects
+    path: '**',
+    redirectTo: '/',
+    pathMatch: 'full',
   },
 ];

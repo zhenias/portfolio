@@ -111,6 +111,9 @@ export class ProjectsService {
           'Tworzenie szablonów do dokumentów oraz generacja PDF, dla konkretnego ucznia.',
           'Wprowadzanie informacji o kartach rowerowych, egzaminach.',
           'Rejestry: kart rowerowych, egzaminów, wycieczek, dokumentów uczniów, uwag.',
+          'Dodawanie i edycja oddziałów.',
+          'Wyświetlanie jednostek, w dalszej części dodam dodanie i edycję jednostki.',
+          'Restrykcja logowania dla użytkowników, inaczej o których dniach użytkownik może logować się.',
         ],
         allImages: [
           '/assets/sekretariat/dashboard.png',
@@ -131,34 +134,42 @@ export class ProjectsService {
       {
         id: 'e-dziennik',
         title: 'e-Dziennik',
-        shortDescription: 'System e-Dziennik pozwalający do zarządzania ocenami, frekwencją, uczniami, pracownikami.',
-        image: '',
+        shortDescription: 'System e-Dziennik pozwala na prowadzenie dokumentacji szkolnej.',
+        image: '/assets/e-dziennik/oceny_koncowe.png',
         tags: ['Laravel', 'PHPUnit', 'MySQL'],
         githubUrl: undefined,
         technologies: ['Laravel', 'PHPUnit', 'JavaScript', 'QR Logowanie', 'MySQL', 'Angular'],
         description: `
-          e-Dziennik pozwala na zarządzanie uczniami, klasami, frekwencją, etc.
+          System e-Dziennik pozwala na zarządzanie uczniami, klasami, frekwencją, etc. <br>
           PS: Wszystkie dane w e-Dzienniku są testowe.
         `,
         features: [
-          'Cyfryzacja tradycyjnego dziennika z zachowaniem wszystkich funkcji.',
-          'Natychmiastowy dostęp do ocen i frekwencji dla rodziców.',
           'Automatyzacja obliczania średnich i statystyk.',
           'Skrócenie czasu pracy nauczycieli przy prowadzeniu dokumentacji.',
-          'Bezpieczna komunikacja między szkołą a domem.',
           'Przejrzyste raporty postępów edukacyjnych.',
-          'Logowanie dwustopniowe, wysyłanie kodu na e-mail.',
-          'Dodatkowe aplikacje do dziennika są: e-Sekretariat, oraz DziennikQR.',
+          'Logowanie wieloskładnikowe, wysyłanie kodu na e-mail.',
+          'Dodatkowe aplikacje do dziennika są: e-Sekretariat, oraz DziennikQR, i wiadomości systemowe (jako osobny moduł).',
+          'Uwagi',
+          'Oceny',
+          'Frekwencja',
+          'Dni wolne',
+          'Dzienniki zajęć innych',
+          'Zastępstwa dla zwykłych lekcji, oraz dzienników zajęć innych',
+          'Wiadomości systemowe',
+          'Realizacja podstawy programowej, rozpoczynanie lekcji oraz edycja, również możliwość sprawdzenie frekwencji',
+          'Kilka motywów: zielony, ciemny, jasny, niebieski',
         ],
         allImages: [
           '/assets/e-dziennik/image.png',
           '/assets/e-dziennik/oceny_srodroczne.png',
           '/assets/e-dziennik/oceny_uczniow.png',
+          '/assets/e-dziennik/oceny_koncowe.png',
           '/assets/e-dziennik/oceny_zachowania.png',
           '/assets/e-dziennik/frekwencja.png',
           '/assets/e-dziennik/promocja_oddzialy.png',
           '/assets/e-dziennik/promocja_uczniowie.png',
           '/assets/e-dziennik/promocja_rok_szkolny.png',
+          '/assets/e-dziennik/uwagi.png',
           '/assets/e-dziennik/uwagi_seryjnie.png',
           '/assets/e-dziennik/frekwencja_seryjnie.png',
           '/assets/e-dziennik/logowanie_qr.png',
@@ -170,12 +181,12 @@ export class ProjectsService {
         title: 'Biblioteka książek',
         shortDescription: 'System do zarządzenia biblioteką książek. Wypożyczanie, sortowanie, wyszukiwanie.',
         image: '/assets/biblioteka-ksiazek/image.png',
-        tags: ['Angular', 'Bootstrap', 'TypeScript'],
+        tags: ['Angular', 'Bootstrap', 'TypeScript', 'Web Storage API'],
         githubUrl: 'https://github.com/zhenias/manager-books-angular',
         demoUrl: 'https://manager-books-angular.vercel.app/books',
-        technologies: ['Angular', 'Bootstrap', 'TypeScript'],
+        technologies: ['Angular', 'Bootstrap', 'TypeScript', 'Web Storage API'],
         description: 'System do zarządzenia biblioteką książek. Wypożyczanie, sortowanie, wyszukiwanie.',
-        features: ['Wypożyczanie', 'Wyszukiwanie', 'Sortowanie'],
+        features: ['Wypożyczanie', 'Wyszukiwanie', 'Sortowanie', 'Dodawanie / Edycja / Usunięcie książki.'],
         allImages: [
           '/assets/biblioteka-ksiazek/image.png',
           '/assets/biblioteka-ksiazek/edycja-ksiazki.png',
@@ -188,14 +199,17 @@ export class ProjectsService {
         title: 'Lista postów',
         shortDescription: 'Aplikacja do wyświetlania listy postów z możliwością usuwania i szczegółów.',
         image: '/assets/lista-postow/image.png',
-        tags: ['Vue.js', 'Composition API'],
+        tags: ['Vue.js', 'Tailwind CSS', 'Composition API'],
         githubUrl: 'https://github.com/zhenias/vue-lista-postow',
         demoUrl: 'https://vue-lists-posts.vercel.app',
-        technologies: ['Vue.js', 'Composition API', 'CSS'],
-        description: 'Prosta aplikacja do wyświetlania listy postów z możliwością usuwania i szczegółów.',
+        technologies: ['Vue.js', 'Composition API', 'Tailwind CSS'],
+        description: 'Prosta aplikacja do wyświetlania listy postów z możliwością usuwania i wyświetlenie szczegółów, oraz paginacja postów.',
         features: ['Paginacja.', 'Usuwanie postów.', 'Wyświetlanie szczegółów posta.'],
         allImages: [
-          '/assets/lista-postow/image.png'
+          '/assets/lista-postow/image.png',
+          '/assets/lista-postow/caly_post.png',
+          '/assets/lista-postow/usuniecie_posta.png',
+          '/assets/lista-postow/paginacja.png',
         ]
       },
       {
@@ -224,10 +238,10 @@ export class ProjectsService {
         title: 'Kalkulator dla logistyków',
         shortDescription: 'Aplikacja do obliczania CBM i kosztów transportu',
         image: '/assets/logistyczny-kalkulator/image.png',
-        tags: ['React', 'MUI'],
+        tags: ['React', 'MUI', 'TypeScript'],
         githubUrl: 'https://github.com/zhenias/tools-for-logistics',
         demoUrl: 'https://tools-for-logistics.vercel.app',
-        technologies: ['React', 'MUI', 'JSx'],
+        technologies: ['React', 'MUI', 'TypeScript'],
         description: 'Prosty kalkulator dla logistyków.',
         features: ['Obliczanie CBM', 'Koszty transportu', 'Konwersje'],
         allImages: [
@@ -239,13 +253,18 @@ export class ProjectsService {
         id: 'ziu-system-wynikow',
         title: 'System wyników',
         shortDescription: 'Aplikacja do dodawanie i edycji wyników z egzaminów.',
-        image: '',
+        image: '/assets/system-wynikow/uzytkownicy.png',
         tags: ['Laravel', 'MySQL'],
         githubUrl: 'https://github.com/zhenias/ziu-system-wynikow',
-        technologies: ['Laravel', 'Laravel Auth', 'PHPUnit', 'JavaScript', 'MySQL'],
+        technologies: ['Laravel', 'Laravel Auth', 'PHPUnit', 'MySQL'],
         description: 'Aplikacja do dodawanie i edycji wyników z egzaminów.',
         features: ['Dodawanie wyników', 'Edycja wyników', 'Konfiguracja słowników', 'Logowanie'],
-        allImages: [],
+        allImages: [
+          '/assets/system-wynikow/deklaracje_egzaminow.png',
+          '/assets/system-wynikow/przedmioty.png',
+          '/assets/system-wynikow/uzytkownicy.png',
+          '/assets/system-wynikow/wyniki.png',
+        ],
         demoUrl: undefined
       },
       {
@@ -253,7 +272,7 @@ export class ProjectsService {
         title: 'Przepracowane godziny pracy',
         shortDescription: 'Przepracowane godziny pracy przez pracowników.',
         image: '',
-        tags: ['Laravel', 'PostgreSQL'],
+        tags: ['Symfony', 'PostgresSQL'],
         githubUrl: 'https://github.com/zhenias/employee-working-time-symfony',
         technologies: ['Symfony', 'API'],
         description: `
@@ -273,9 +292,9 @@ export class ProjectsService {
         title: 'System wiadomości',
         shortDescription: '',
         image: '',
-        tags: ['TypeScript', 'Tailwind', 'REST API'],
+        tags: ['TypeScript', 'Tailwind CSS', 'REST API'],
         githubUrl: 'https://github.com/zhenias/angular-messages',
-        technologies: ['TypeScript', 'TailwindCSS', 'REST API'],
+        technologies: ['TypeScript', 'Tailwind CSS', 'REST API'],
         description: `
           System wiadomości, wyświetlanie odebranych, wysłanych, w koszu, wiadomości.
         `,
@@ -285,6 +304,38 @@ export class ProjectsService {
           'Wyświetlanie wiadomości z koszu, odebranych, wysłanych, archiwum.',
         ],
         allImages: [],
+        demoUrl: undefined
+      },
+      {
+        id: 'fastmess',
+        title: 'FastMess',
+        shortDescription: 'Komunikator typu messenger.',
+        image: '/assets/fastmess/czat1.png',
+        tags: ['PHP', 'Laravel', 'JavaScript', 'REST API'],
+        githubUrl: 'https://github.com/zhenias/api-fastmess',
+        technologies: ['PHP', 'Laravel', 'JavaScript', 'REST API'],
+        description: `
+          FastMess, inaczej komunikator wiadomości.
+          <br>
+          Bazowany na Telegram (wygląd).
+          <br>
+          Również można sprawdzić mini dokumentację:
+          <br>
+          <a href="https://github.com/zhenias/api-fastmess/blob/main/Authorization%20REST%20API.txt" target="_blank" style="color: blue !important; text-decoration: underline;">dokumentacja</a>
+        `,
+        features: [
+          'Wysyłanie wiadomości.',
+          'Przeglądanie wiadomości.',
+          'Edycja własnego konta.',
+          'Rejestracja / logowanie.',
+        ],
+        allImages: [
+          '/assets/fastmess/logowanie.png',
+          '/assets/fastmess/logowanie_kod.png',
+          '/assets/fastmess/konto.png',
+          '/assets/fastmess/czat1.png',
+          '/assets/fastmess/czat2.png',
+        ],
         demoUrl: undefined
       }
     ];

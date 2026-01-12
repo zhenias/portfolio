@@ -35,7 +35,7 @@
         <h4 class="text-xl font-semibold mb-3 text-gray-800">
           <i class="bi bi-file-text mr-2"></i>Opis projektu
         </h4>
-        <p class="text-gray-700 leading-relaxed">{{project?.description}}</p>
+        <p class="text-gray-700 leading-relaxed" [innerHTML]="project?.description"></p>
       </div>
 
       <!-- Technologie -->
