@@ -74,7 +74,7 @@ export class ProjectsService {
         features: [
           'Parowanie urządzeń.',
           'Logowanie za pomocą QR kodu.',
-          'Wyświetlanie listy kont, połączonych na urządzeniu.',
+          'Wyświetlanie listy kont połączonych na urządzeniu.',
           'Możliwość wyzerowania urządzenia z poziomu aplikacji, jak i zarówno z e-Dziennika.',
         ],
         allImages: [
@@ -82,7 +82,7 @@ export class ProjectsService {
           '/assets/dziennik-qr/lista_kont.PNG',
           '/assets/dziennik-qr/parowanie.jpg',
         ],
-        githubUrl: undefined,
+        githubUrl: 'https://github.com/zhenias/dziennik-qr-angular',
         demoUrl: 'https://dziennik-szkola.online/ui/qr-auth/browser/index.html',
       },
       {
