@@ -72,10 +72,10 @@ export class ProjectsService {
           Prosta aplikacja, połączona z e-Dziennikie, pozwalająca zalogowanie do aplikacji poprzez QR kod.
         `,
         features: [
-          'Parowanie urządzeń.',
+          'Parowanie urządzenia z kontem na e-Dzienniku.',
           'Logowanie za pomocą QR kodu.',
           'Wyświetlanie listy kont połączonych na urządzeniu.',
-          'Możliwość wyzerowania urządzenia z poziomu aplikacji, jak i zarówno z e-Dziennika.',
+          'Możliwość wyzerowania urządzenia z poziomu aplikacji, jak i zarówno z poziomu e-Dziennika.',
         ],
         allImages: [
           '/assets/dziennik-qr/logowanie.jpg',
@@ -337,6 +337,42 @@ export class ProjectsService {
           '/assets/fastmess/czat2.png',
         ],
         demoUrl: undefined
+      },
+      {
+        "id": "ollama-ai-local",
+        "title": "Ollama AI Local + Open WebUI",
+        "shortDescription": "Środowisko do uruchamiania lokalnych modeli AI (LLM) z interfejsem WebUI. Wykorzystuje Ollama natywnie (GPU Apple Silicon) i Open WebUI w Dockerze.",
+        "image": "/assets/ollama/chat-example.png",
+        "tags": ["Docker", "Ollama", "Python", "Shell", "AI"],
+        "githubUrl": "https://github.com/zhenias/local-ai-ollama-docker",
+        "technologies": ["Docker", "Ollama", "Shell", "Python", "Open WebUI", "REST API"],
+        "description": `
+          Lokalne środowisko AI, które łączy moc modeli językowych z prywatnością danych.
+          <br><br>
+          <strong>⚡ Główne założenia:</strong>
+          <ul>
+            <li><strong>Ollama</strong> działa <strong>natywnie</strong> (z dostępem do GPU Apple Silicon).</li>
+            <li><strong>Open WebUI</strong> działa w kontenerze Dockera i komunikuje się z lokalną Ollama.</li>
+            <li>Gotowe skrypty do pobierania modeli i uruchamiania środowiska jednym poleceniem.</li>
+          </ul>
+          <br>
+          📦 <strong>Wymagania:</strong> Docker Desktop, Ollama (brew install ollama - macOS) i ok. 5 GB wolnego miejsca.
+        `,
+        "features": [
+          "💬 Interfejs WebUI do rozmowy z lokalnym modelem LLM",
+          "🧠 Wbudowane modele: qwen2.5-coder:7b (kodowanie) oraz nomic-embed-text (embeddingi RAG)",
+          "🐳 Łatwe uruchamianie za pomocą skryptów start/stop",
+          "🔧 Możliwość dodawania własnych modeli przez panel admina lub skrypt",
+          "🔒 Prywatność – wszystko działa lokalnie, bez wysyłania danych do chmury",
+          "⚙️ Konfiguracja przez plik .env (porty, nazwa asystenta, klucz sekretny)"
+        ],
+        "allImages": [
+          "/assets/ollama/webui-main.png",
+          "/assets/ollama/model-selection.png",
+          "/assets/ollama/chat-example.png",
+          "/assets/ollama/admin-panel.png"
+        ],
+        "demoUrl": undefined
       }
     ];
   }

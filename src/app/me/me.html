@@ -1,166 +1,328 @@
-<div class="min-h-screen flex flex-col items-center justify-center p-6">
-  <!-- Zdjęcie i wprowadzenie -->
-  <div class="flex flex-col md:flex-row items-center gap-8 max-w-5xl w-full mb-12">
-    <img src="/assets/kot.jpg" alt="Kotek :)"
-      class="w-48 h-48 object-cover animate-fadeIn rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300">
+<div class="min-h-screen transition-colors duration-300 dark:from-gray-900 dark:to-gray-800">
+  <div class="min-h-screen">
+    <!-- Główna zawartość -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
 
-    <div class="text-center md:text-left animate-fadeIn delay-150">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Cześć! Mam na imię Żenia.</h1>
-      <p class="text-lg md:text-xl text-gray-700 mb-2">Jestem uczniem technikum, 5 klasa programistyczna.</p>
-      <p class="text-lg md:text-xl text-gray-700">
-        Kocham tworzyć coś nowego i rozwijać się w programowaniu.<br>
-        Skupiam się teraz na front-endzie, ale znam też back-end.
-      </p>
-    </div>
-  </div>
-
-  <!-- Umiejętności -->
-  <div class="mt-8 w-full max-w-5xl animate-fadeIn delay-300">
-    <h2 class="text-3xl font-semibold mb-8 text-gray-900 text-center">Moje technologie</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Front-end -->
-      <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-        <h3 class="font-semibold text-2xl mb-4 text-gray-800">Front-end</h3>
-        <ul class="flex flex-col gap-3 text-gray-700">
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-green-500 text-xs"></i> Node.js
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-yellow-500 text-xs"></i> JavaScript
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-red-500 text-xs"></i> Angular
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-cyan-500 text-xs"></i> React (podstawy)
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-green-600 text-xs"></i> Vue (podstawy)
-          </li>
-        </ul>
-      </div>
-
-      <!-- Back-end -->
-      <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-        <h3 class="font-semibold text-2xl mb-4 text-gray-800">Back-end</h3>
-        <ul class="flex flex-col gap-3 text-gray-700">
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-gray-700 text-xs"></i> Symfony
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-red-400 text-xs"></i> Laravel
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-purple-600 text-xs"></i> PHP, PHPUnit
-          </li>
-        </ul>
-
-        <h3 class="font-semibold text-2xl mb-4 text-gray-800 mt-[20px]">Bazy danych</h3>
-        <ul class="flex flex-col gap-3 text-gray-700">
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-yellow-700 text-xs"></i> MySQL
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-indigo-700 text-xs"></i> PostgreSQL
-          </li>
-        </ul>
-      </div>
-
-      <!-- Style / UI -->
-      <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-        <h3 class="font-semibold text-2xl mb-4 text-gray-800">Style / UI</h3>
-        <ul class="flex flex-col gap-3 text-gray-700">
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-teal-500 text-xs"></i> Tailwind CSS
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-indigo-500 text-xs"></i> Bootstrap
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-blue-600 text-xs"></i> Angular Material
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="bi bi-circle-fill text-amber-500 text-xs"></i> CSS
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- Projekty -->
-  <div class="mt-20 w-full max-w-7xl px-4 animate-fadeIn delay-450">
-    <h2 class="text-3xl font-semibold mb-12 text-gray-900 text-center">Moje projekty</h2>
-
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
-      <!-- Projekt - ngFor -->
-      <div *ngFor="let project of projects"
-        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200">
-
-        <!-- Obrazek -->
-        <div class="relative overflow-hidden h-56" [ngClass]="{
-          'bg-gradient-to-br from-blue-500 to-cyan-500': project.tags.includes('Angular'),
-          'bg-gradient-to-br from-green-500 to-emerald-500': project.tags.includes('Vue'),
-          'bg-gradient-to-br from-purple-500 to-pink-500': project.tags.includes('Symfony'),
-          'bg-gradient-to-br from-gray-700 to-gray-900': !project.image
-        }">
-          <div *ngIf="!project.image" class="w-full h-full flex flex-col items-center justify-center text-white">
-            <i [class]="getProjectIcon(project)" class="text-4xl mb-2 opacity-90"></i>
-            <span class="text-lg font-medium">{{ project.title }}</span>
-          </div>
-          <img [src]="project.image" *ngIf="project.image" [alt]="project.title"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      <!-- Zdjęcie i wprowadzenie -->
+      <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
+        <div class="relative group">
           <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          </div>
+            class="absolute -inset-1 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
+          <img src="/assets/kot.jpg" alt="Kotek :)"
+               class="relative w-48 h-48 object-cover rounded-2xl shadow-xl ring-4 ring-white dark:ring-gray-800">
         </div>
 
-        <!-- Treść -->
-        <div class="p-6">
-          <!-- Tytuł -->
-          <h3 class="text-xl font-semibold mb-2 text-gray-900">{{ project.title }}</h3>
+        <div class="flex-1 text-center lg:text-left">
+          <h1
+            class="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Cześć! Mam na imię Żenia.
+          </h1>
+          <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-300 mb-2">
+            Jestem absolwentem technikum.
+          </p>
+          <p class="text-lg lg:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+            Kocham tworzyć coś nowego i rozwijać się w programowaniu.<br>
+            Skupiam się teraz na front-end'zie, ale znam też back-end, i mam 3 lata doświadczenia.
+          </p>
+        </div>
+      </div>
 
-          <!-- Opis -->
-          <p class="text-gray-600 mb-4 text-sm">{{ project.shortDescription }}</p>
+      <!-- Umiejętności -->
+      <div class="mb-20">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+          Moje technologie
+        </h2>
 
-          <!-- Tagi -->
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span *ngFor="let tag of project.tags" class="px-2 py-1 rounded text-xs"
-              [ngClass]="projectsService.getColorClass(tag)"
-            >
-              {{ tag }}
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- Front-end -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
+                  <i class="bi bi-window-sidebar text-blue-600 dark:text-blue-400 text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white">Front-end</h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Frameworki i biblioteki</p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    Frameworki</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-angular mr-1"></i> Angular
             </span>
+                    <span
+                      class="px-3 py-1.5 bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-browser-edge mr-1"></i> React
+            </span>
+                    <span
+                      class="px-3 py-1.5 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-vuejs mr-1"></i> Vue
+            </span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    Języki</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-filetype-js mr-1"></i> JavaScript
+            </span>
+                    <span
+                      class="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-filetype-ts mr-1"></i> TypeScript
+            </span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    Runtime</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-node-plus mr-1"></i> Node.js
+            </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Przyciski -->
-          <div class="flex flex-col gap-2">
+          <!-- Back-end -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
+                  <i class="bi bi-server text-green-600 dark:text-green-400 text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white">Back-end</h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">API i logika serwerowa</p>
+                </div>
+              </div>
 
-            <!-- Linki GitHub/Demo -->
-            <div *ngIf="project.githubUrl || project.demoUrl" class="flex gap-2">
-              <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank"
-                class="flex-1 px-3 py-2 bg-gray-800 cursor-pointer text-white rounded-lg hover:bg-gray-900 transition-colors text-center flex items-center justify-center gap-2 text-sm">
-                <i class="bi bi-github"></i> GitHub
-              </a>
-              <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank"
-                class="flex-1 px-3 py-2 bg-blue-500 cursor-pointer text-white rounded-lg hover:bg-blue-600 transition-colors text-center flex items-center justify-center gap-2 text-sm">
-                <i class="bi bi-eye"></i> Demo
-              </a>
+              <div class="space-y-4">
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    Frameworki PHP</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-symfony mr-1"></i> Symfony
+            </span>
+                    <span
+                      class="px-3 py-1.5 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-laravel mr-1"></i> Laravel
+            </span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    Java</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-java mr-1"></i> Spring (podstawy)
+            </span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    Języki</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-filetype-php mr-1"></i> PHP
+            </span>
+                    <span
+                      class="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium">
+              PHPUnit
+            </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bazy danych i DevOps -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-xl flex items-center justify-center">
+                  <i class="bi bi-database text-yellow-600 dark:text-yellow-400 text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white">Bazy danych & DevOps</h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Storage i narzędzia</p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    Relacyjne bazy</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-mysql mr-1"></i> MySQL
+            </span>
+                    <span
+                      class="px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-postgresql mr-1"></i> PostgreSQL
+            </span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    NoSQL</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-redis mr-1"></i> Redis
+            </span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                    DevOps & Narzędzia</h4>
+                  <div class="flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium">
+              <i class="bi bi-box-seam mr-1"></i> Docker
+            </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Style / UI - osobny wiersz -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+
+          <!-- Style / UI -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 md:col-span-2">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
+                  <i class="bi bi-palette text-purple-600 dark:text-purple-400 text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white">Style & UI</h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Frameworki CSS i biblioteki komponentów</p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-3">
+        <span
+          class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300 rounded-lg text-sm font-medium">
+          <i class="bi bi-wind mr-1"></i> Tailwind CSS
+        </span>
+                <span
+                  class="px-4 py-2 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium">
+          <i class="bi bi-bootstrap mr-1"></i> Bootstrap
+        </span>
+                <span
+                  class="px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg text-sm font-medium">
+          <i class="bi bi-google mr-1"></i> Angular Material
+        </span>
+                <span
+                  class="px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium">
+          <i class="bi bi-css3 mr-1"></i> CSS3
+        </span>
+                <span
+                  class="px-4 py-2 bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-300 rounded-lg text-sm font-medium">
+          <i class="bi bi-sass mr-1"></i> SCSS/SASS
+        </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Projekty -->
+      <div>
+        <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
+          Moje projekty
+        </h2>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div *ngFor="let project of projects"
+               class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+
+            <!-- Obrazek -->
+            <div class="relative h-48 overflow-hidden">
+              <div *ngIf="!project.image"
+                   class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
+                <i [class]="getProjectIcon(project)" class="text-4xl text-gray-400 dark:text-gray-600"></i>
+              </div>
+              <img [src]="project.image" *ngIf="project.image" [alt]="project.title"
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 
-            <!-- Przycisk szczegółów -->
-            <button (click)="openModal(project.id)"
-              class="w-full cursor-pointer px-3 py-2 bg-gradient-to-r from-purple-50 to-blue-50 text-purple-700 rounded-lg hover:from-purple-100 hover:to-blue-100 transition-colors font-medium text-sm border border-purple-100 flex items-center justify-center gap-2">
-              <i class="bi bi-info-circle"></i> Szczegóły projektu
-            </button>
+            <!-- Treść -->
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                {{ project.title }}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                {{ project.shortDescription }}
+              </p>
 
+              <!-- Tagi -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span *ngFor="let tag of project.tags"
+                      class="px-2 py-1 rounded-full text-xs font-medium"
+                      [ngClass]="projectsService.getColorClass(tag)">
+                  {{ tag }}
+                </span>
+              </div>
+
+              <!-- Przyciski -->
+              <div class="flex flex-col gap-2">
+                <div *ngIf="project.githubUrl || project.demoUrl" class="flex gap-2">
+                  <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank"
+                     class="flex-1 px-3 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-colors text-center flex items-center justify-center gap-2 text-sm">
+                    <i class="bi bi-github"></i> GitHub
+                  </a>
+                  <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank"
+                     class="flex-1 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-center flex items-center justify-center gap-2 text-sm">
+                    <i class="bi bi-eye"></i> Demo
+                  </a>
+                </div>
+                <button (click)="openModal(project.id)"
+                        class="w-full px-3 py-2 border border-purple-200 dark:border-purple-800 text-purple-600 dark:text-purple-400 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors font-medium text-sm flex items-center justify-center gap-2 cursor-pointer">
+                  <i class="bi bi-info-circle"></i> Szczegóły
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <!-- Modal -->
-  <app-project-modal *ngIf="showModal" [project]="selectedProject" (closeModal)="closeModal()" />
+  <app-project-modal *ngIf="showModal" [project]="selectedProject" (closeModal)="closeModal()"/>
 </div>

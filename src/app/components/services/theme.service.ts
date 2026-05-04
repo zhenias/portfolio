@@ -1,32 +1,21 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {SocialMedia} from './social-media/social-media';
-import {ThemeService} from './components/services/theme.service';
-import {AsyncPipe} from '@angular/common';
-import {BehaviorSubject, fromEvent} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, fromEvent } from 'rxjs';
 
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, SocialMedia, AsyncPipe],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
-})
-export class App {
-  protected title = 'portfolio';
-
+@Injectable({ providedIn: 'root' })
+export class ThemeService {
   private readonly THEME_KEY = 'app-theme';
   private themeSubject = new BehaviorSubject<'light' | 'dark' | 'system'>('system');
   public currentTheme$ = this.themeSubject.asObservable();
 
-  constructor(public themeService: ThemeService) {
-    this.currentTheme$ = inject(ThemeService).currentTheme$;
-
+  constructor() {
     this.loadTheme();
     this.watchSystemTheme();
   }
 
   setTheme(theme: 'light' | 'dark' | 'system') {
-    this.themeService.setTheme(theme);
+    this.themeSubject.next(theme);
+    localStorage.setItem(this.THEME_KEY, theme);
+    this.applyTheme(theme);
   }
 
   private loadTheme() {
@@ -57,14 +46,5 @@ export class App {
         this.applyTheme('system');
       }
     });
-  }
-
-  isDarkTheme(): boolean {
-    const current = this.themeSubject.value;
-    if (current === 'dark') return true;
-    if (current === 'system') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return false;
   }
 }

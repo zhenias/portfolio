@@ -1,5 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Jasny motyw (domyślny) */
+:root {
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border: #e5e7eb;
+}
+
+/* Ciemny motyw */
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border: #374151;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
 
 @keyframes fadeIn {
   0% {

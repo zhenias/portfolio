@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf } from "@angular/common";
+import {AsyncPipe, NgClass, NgFor, NgIf} from "@angular/common";
 import { Component, type OnInit } from '@angular/core';
 import { ProjectModal } from '../project-modal/project-modal';
 import { ProjectsService, Project } from "../components/services/project.service";
@@ -14,7 +14,7 @@ export class Me implements OnInit {
   selectedProject: Project | null | undefined;
   showModal = false;
 
-  constructor(public projectsService: ProjectsService) {}
+  constructor(public projectsService: ProjectsService) { }
 
   ngOnInit() {
     this.projects = this.projectsService.getProjects();
@@ -36,7 +36,7 @@ export class Me implements OnInit {
     if (project.tags.includes('React')) return 'bi bi-react';
     if (project.tags.includes('Symfony') || project.tags.includes('PHP')) return 'bi bi-symfony';
     if (project.tags.includes('Mobile')) return 'bi bi-phone';
-    
+
     return 'bi bi-code-slash';
   }
 }
